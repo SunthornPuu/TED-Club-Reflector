@@ -15,7 +15,7 @@ export default function LoginScreen({ onLogin, error, isLoading }) {
     <div className="animate-slide-up bg-white rounded-2xl shadow-sm border border-gray-100 p-8 w-full max-w-sm mx-auto">
       <div className="text-center mb-8">
         <h2 className="text-2xl font-bold text-gray-900">Welcome Back</h2>
-        <p className="text-gray-500 text-sm mt-1">เข้าสู่ระบบเพื่อสะท้อนคิด</p>
+        <p className="text-gray-500 text-sm mt-1">เข้าสู่ระบบเพื่อสะท้อนกิจกรรม</p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-5">
