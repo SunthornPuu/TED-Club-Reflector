@@ -1,13 +1,13 @@
 const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY;
 const GROQ_ENDPOINT = 'https://api.groq.com/openai/v1/chat/completions';
 
-const LEADER_CONTEXT = `Context: The user you are interviewing is a "Leader for Youth" (facilitator/coach) running a TED Club under TEDxBangkok Youth. 
-Their role is to create a "Safe Space" and "Creative Space" for youth (aged 6-25) to practice deep listening and public speaking without the pressure of academic grading or fear of judgment. 
+const LEADER_CONTEXT = `Context: The user you are interviewing is a "Leader for Youth" (facilitator) running a TED Club under TEDxBangkok Youth. 
+Their role is to create a "Safe Space" and "Creative Space" for youth (aged 6-25) to practice deep listening and public speaking without academic grading.
 Key rules for their role: 
-1. They act purely as a coach/guide, not a dictator of ideas. The ideas must come from the students' own passions.
-2. The club must be entirely free and not tied to any academic scores or rewards. 
-3. They use Design Thinking principles (Curiosity -> Collaboration -> Try) to stimulate engagement. 
-Your goal as a reflection coach is to help this Leader reflect on how well they are facilitating this safe, creative space, how effectively they are guiding (rather than dictating) the students, and their personal growth as a facilitator.`;
+1. They act purely as a coach, not a dictator of ideas. Ideas must come from the students.
+2. The club must be entirely free and not tied to academic scores. 
+3. They use Design Thinking principles (Curiosity -> Collaboration -> Try). 
+Your goal as a reflection coach is strictly to help this Leader reflect on THE SPECIFIC ACTIVITY THEY JUST HOSTED and HOW THEY BUILT A SAFE SPACE during that specific activity. Do NOT ask generic questions about their overall "leadership style" or "leadership growth". Focus entirely on the concrete details of the activity itself and the safe space dynamics.`;
 
 /**
  * Generate the 3rd reflection question based on Q1 and Q2.
@@ -18,7 +18,7 @@ Your goal as a reflection coach is to help this Leader reflect on how well they 
 export async function generateQuestion3(q1Answer, q2Answer) {
   const systemPrompt = `You are a thoughtful reflection coach for a student club. ${LEADER_CONTEXT}
 
-Based on the student's answers about their club activity, generate exactly 1 follow-up question that encourages deeper reflection on their leadership and hosting experience.
+Based on the student's answers about their club activity, generate exactly 1 follow-up question that asks for more specific details about what actually happened during the activity, or how the safe space concept was applied in that moment. Do NOT ask about generic leadership style.
 
 The student's club activity context:
 - Q1 (What activity they hosted): Will be provided
@@ -88,7 +88,7 @@ Please generate 1 follow-up reflection question with Thai translation.`;
 export async function generateQuestion4(q1Answer, q2Answer, q3Question, q3Answer) {
   const systemPrompt = `You are a thoughtful reflection coach for a student club. ${LEADER_CONTEXT}
 
-Based on the student's previous answers, generate exactly 1 final follow-up question that challenges them to think about future applications or core leadership takeaways as a Club Host.
+Based on the student's previous answers, generate exactly 1 final follow-up question that challenges them to reflect on how they maintained the "safe space" or "creative space" during this specific activity, based on what they just told you. Do NOT ask about generic leadership growth.
 
 The student's club activity context:
 - Q1 (Activity hosted): Will be provided
